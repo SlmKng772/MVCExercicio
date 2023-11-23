@@ -1,0 +1,49 @@
+﻿@model MVCExercicio.Models.InventarioModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Inventario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label>Cliente</label>
+            <select name="idCli" class="form-control">
+                @foreach (var item in Model.ClientesList)
+                {
+                    <option value="@item.idCli">@item.Nome</option>
+                }
+            </select>
+            <hr />
+            <label>Máquina</label>
+            <select name="idMaq" class="form-control">
+                @foreach (var item in Model.MaqList)
+                {
+                    <option value="@item.idMaq">@item.Maquina</option>
+                }
+            </select>
+            <div class="form-group">
+                <label asp-for="Qtd" class="control-label"></label>
+                <input asp-for="Qtd" class="form-control" />
+                <span asp-validation-for="Qtd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVCExercicio.Models.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idCli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idMaq)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qtd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idMaq)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtd)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idInv">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idInv">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idInv">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
